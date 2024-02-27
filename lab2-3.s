@@ -70,23 +70,23 @@ count_ones:
 move $t0, $a0 
 ############################## Part 1: your code begins here ###
 
-addi $t1, $0, 0				# $t1 = counter 
+addi $t1, $0, 0				  # $t1 = counter 
 addi $t2, $0, 32				# #t2 = i
 
 loop: 
 addi $t2, $t2, -1				# i-- 
 andi $t3, $t0, 1				# And mask to preserve the first bit stored in $t3
-bgt $t3, $0, is_one                 # If first bit is one, 1 > 0, Go to is_one label 
+bgt $t3, $0, is_one     # If first bit is one, 1 > 0, Go to is_one label 
 
 shift:
 srl $t0, $t0, 1				# Shift all bits one to the right
-beq $t2, $0, end				# If i = 0, end
-bgt $t2, $0, loop                   # If i > 0, loop
+beq $t2, $0, end			# If i = 0, end
+bgt $t2, $0, loop     # If i > 0, loop
 
 
 is_one: 
 addi $t1, $t1, 1				# counter++
-j shift					# Shift right to next bit
+j shift					        # Shift right to next bit
 
 end: 
 add $t9, $0, $t1				# Store counter in register $t9
